@@ -14,6 +14,13 @@
       const db = firebase.firestore();
       //puxar grupos
       function searchgroup(){
+        const userId = localStorage.getItem("userId");
+        if (userId !== "FZVQ8v67i7bYMQbecHFKUE2JaN23") {
+          document.querySelector("#btncriargp").style.display = 'none'
+          document.querySelector("#btncriartarefa").style.display = 'none'
+        }
+
+        document.querySelector("#myuser").innerText = 'Usuario: ' + localStorage.getItem("nome")
         //PUXARMSG
         firebase.database().ref("msg" + localStorage.getItem("nome")).on("value", (snapshot) => {
           snapshot.forEach((childSnapshot) => {
@@ -50,6 +57,7 @@ Swal.fire({
     title: 'Digite uma mensagem para o grupo "' + doc.data().nome + '"',
     html: '<input type="text" placeholder="Digite aqui a mensagem" id="meuInput">',
     showCancelButton: true,
+    showCloseButton: true,
     confirmButtonText: 'Enviar',
     cancelButtonText: 'Cancelar',
     focusConfirm: false,
@@ -159,9 +167,10 @@ Swal.fire({
     title: 'Digite uma mensagem para: "' + doc.data().nome + '"',
     html: '<input type="text" id="msg" placeholder="Digite aqui a mensagem" >',
     showCancelButton: true,
+    
     confirmButtonText: 'Enviar',
     cancelButtonText: 'Cancelar',
-    focusConfirm: false,
+    focusConfirm: true,
     preConfirm: () => {
       const meuInput = Swal.getPopup().querySelector('#msg').value;
       if (!meuInput) {
@@ -172,7 +181,11 @@ Swal.fire({
   }).then((result) => {
    //enviar msg para o serv USUARIO
   
-   firebase.database().ref("msg" + doc.data().nome).push({
+    
+    
+   if (result.isConfirmed) {
+    // Ação a ser executada quando o usuário confirma
+     firebase.database().ref("msg" + doc.data().nome).push({
     por: localStorage.getItem("nome"),
     horario: horario,
     msg: document.querySelector("#msg").value,
@@ -187,17 +200,14 @@ Swal.fire({
         text: result.value
       });
     } else {
-      console.log("MENSAGEM SALVA");
-      Swal.fire({
-        icon: 'success',
-        title: 'Mensagem encaminhada:',
-        text: result.value
-      });
-      location.reload()
+     
     }
+    
   });
-  
-   //final
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    // Ação a ser executada quando o usuário cancela
+    console.log('Ação cancelada');
+  }
    
   });}
 
@@ -214,3 +224,20 @@ document.getElementById('usuarios').appendChild(userList);
     location.href = 'cadgrupo.html'
  }
 
+ const logoutBtn = document.querySelector("#deslogar");
+
+ logoutBtn.addEventListener("click", () => {
+   // Desloga o usuário da conta do Firebase Auth
+   firebase.auth().signOut().then(() => {
+     // Limpa os dados do navegador
+     localStorage.clear();
+     sessionStorage.clear();
+     document.cookie.split(";").forEach((cookie) => {
+       document.cookie = cookie.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+     });
+ 
+     // Redireciona para a página principal
+     window.location.href = "login.html";
+   });
+ });
+ 

@@ -34,6 +34,7 @@ document.getElementById("form-cadastro").addEventListener("submit", function(eve
                  
                 }).then(function(docRef) {
                   console.log("Documento adicionado com ID:", docRef.id);
+                  location.href = 'login.html'
                 }).catch(function(error) {
                   console.error("Erro ao adicionar documento:", error);
                 });

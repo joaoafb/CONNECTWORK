@@ -23,7 +23,7 @@ document.getElementById("form-login").addEventListener("submit", function(event)
         .then(function(user) {
             console.log("Usuário logado com sucesso!");
             // Redireciona o usuário para a página desejada
-            alert("logado")
+            location.href = 'index.html'
             
         const IDUSER = firebase.auth().currentUser;
             localStorage.setItem('userId', IDUSER.uid)
@@ -34,7 +34,11 @@ document.getElementById("form-login").addEventListener("submit", function(event)
               
         })
         .catch(function(error) {
-            console.error(error)
-            alert("NAO TEM CONTA OU SENHA E EMAIL ERRADO")
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email/Senha errados!',
+                footer: '<a href="cadastro.html">Caso não tenha conta, crie uma agora!</a>'
+              })
         });
 });

@@ -43,7 +43,7 @@
         margin-top: 35px;
       }
       .boxmsg{
-       
+       width: 20px;
         max-height: 100vh;
       }
       .card-content ul {
@@ -109,8 +109,12 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="#">Home</a></li>
         
-          <li><a href="criartarefas.html">Criar Tarefa</a></li>
-          <li><a href="#">Deslogar</a></li>
+          <li><a href="criartarefas.html" id="btncriartarefa">Criar Tarefa</a></li>
+          <li id="deslogar"><a href="#">Deslogar</a></li>
+          
+           
+            <li id="myuser" style="padding-right: 25px;"></li>
+          
         </ul>
       </div>
     </nav>
@@ -155,7 +159,7 @@
           <div class="card">
             <div class="card-content">
               <div class="flex row flexrow"><span class="card-title">Grupos</span>
-                <button class="btn waves-effect waves-light" type="button" onclick="criarGrupo()">Criar Grupo</button>
+                <button class="btn waves-effect waves-light" id="btncriargp" type="button" onclick="criarGrupo()">Criar Grupo</button>
   </div>
 
               <div id="grupos"></div>

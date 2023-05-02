@@ -63,18 +63,18 @@ db.collection('tasks').add({
     descricao: descricao,
     dataEntrega: dataEntrega,
     userID: localStorage.getItem("userId"),
-    grupo: document.querySelector("#grupos").value,
-    usuarios: document.querySelector("#usuarios").value,
+    grupo: document.querySelector("#inputgrupos").value,
+    usuarios: document.querySelector("#inputusuarios").value,
     status: 'pendente'
 })
   .then((docRef) => {
     console.log('Tarefa salva com ID: ', docRef.id);
-    if(document.querySelector("#usuarios").value == "Selecionar Colaborador"){}else{
+    if(document.querySelector("#inputusuarios").value == "Selecionar Colaborador"){}else{
         //acao gravar em usuario
        
-        acharuser(document.querySelector("#usuarios").value)
+        acharuser(document.querySelector("#inputusuarios").value)
     }
-    if(document.querySelector("#grupos").value == ''){}else{
+    if(document.querySelector("#inputgrupos").value == ''){}else{
         //acao gravar em grupo
         gravartarefagrupo()
     }
@@ -86,7 +86,7 @@ db.collection('tasks').add({
   });
 
 function acharuser(emailuser){
-    emailuser = document.querySelector("#usuarios").value
+    emailuser = document.querySelector("#inputusuarios").value
     
   
   //salvar tarefa no usuario
@@ -94,7 +94,7 @@ function acharuser(emailuser){
   .get()
   .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        emailuser = document.querySelector("#usuarios").value
+        emailuser = document.querySelector("#inputusuarios").value
           gravartarefauser();
           console.log("usuario encontrado")
       });
@@ -105,13 +105,13 @@ function acharuser(emailuser){
 }
 
 function gravartarefauser(){
-    emailuser = document.querySelector("#usuarios").value
+    emailuser = document.querySelector("#inputusuarios").value
    
 db.collection(emailuser).add({
     nome: document.querySelector('#nome').value,
     descricao: document.querySelector('#descricao').value,
     dataEntrega: document.querySelector('#dataEntrega').value,
-    email: document.querySelector("#usuarios").value,
+    email: document.querySelector("#inputusuarios").value,
     por: localStorage.getItem("nome"),
     status:"pendente"
     
@@ -130,13 +130,13 @@ db.collection(emailuser).add({
 
 
 function gravartarefagrupo(){
-    grupo = document.querySelector("#grupos").value
+    grupo = document.querySelector("#inputgrupos").value
    
 db.collection(grupo).add({
     nome: document.querySelector('#nome').value,
     descricao: document.querySelector('#descricao').value,
     dataEntrega: document.querySelector('#dataEntrega').value,
-    grupo: document.querySelector("#grupos").value,
+    grupo: document.querySelector("#inputgrupos").value,
     por: localStorage.getItem("nome"),
     status:'pendente'
     
