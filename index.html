@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ConnectWork</title>
+   
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    
+
+
+<!-- Importar o SDK do Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+      body {
+        background-color: #f5f5f5;
+      }
+      .nav-wrapper {
+        background-color: #26a69a;
+      }
+      .nav-wrapper a {
+        font-size: 20px;
+        letter-spacing: 1px;
+      }
+      .nav-wrapper i {
+        font-size: 30px;
+      }
+      .card-title {
+        font-size: 24px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: #444;
+      }
+      .mtop10{
+        margin-top: 35px;
+      }
+      .boxmsg{
+       
+        max-height: 100vh;
+      }
+      .card-content ul {
+        padding-left: 20px;
+      }
+      .card-content li {
+        font-size: 18px;
+        color: #666;
+        padding: 10px 0;
+      }
+      .card-content li:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+      }
+      .imagem{
+        width: 60px;
+        border-radius: 10px;
+      }
+      
+      .group{
+        display: flex;
+        flex-direction: row;
+      }
+      #grupos li img{
+        padding-right: 15px;
+      }
+      #grupos li{
+        display: flex;
+       padding: 5px;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      #usuarios li img{
+        padding-right: 15px;
+      }
+      #usuarios li{
+        display: flex;
+       padding: 5px;
+        align-items: center;
+        flex-direction: row;
+      }
+      .flexrow{
+        display: flex;
+        flex-direction: row;
+        
+      }
+      .flexrow button{
+        position: absolute;
+        right: 20px;
+      }
+      .activesel {
+  background-color: yellow;
+}
+
+    </style>
+  </head>
+  <body onload="searchgroup()">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">ConnectWork</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Home</a></li>
+        
+          <li><a href="criartarefas.html">Criar Tarefa</a></li>
+          <li><a href="#">Deslogar</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="#">Home</a></li>
+      <li><a href="criartarefas.html">Criar Tarefa</a></li>
+      <li><a href="#">Deslogar</a></li>
+    </ul>
+
+    <!--CAIXA DE MSG-->
+    <div class="">
+      <div class="row">
+        <div class="col s12 m6 boxmsg">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Mensagens</span>
+              <br>
+             
+              <div id="msgs">
+                
+              </div>
+            </div>
+          </div>
+        </div>    
+
+<!--LISTA USUARIOS-->
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Usuários</span>
+              <br>
+             
+              <div id="usuarios"></div>
+            </div>
+          </div>
+        </div>
+        <!--LISTA GRUPOS-->
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content">
+              <div class="flex row flexrow"><span class="card-title">Grupos</span>
+                <button class="btn waves-effect waves-light" type="button" onclick="criarGrupo()">Criar Grupo</button>
+  </div>
+
+              <div id="grupos"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
