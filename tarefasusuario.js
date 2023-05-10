@@ -15,9 +15,11 @@ const firebaseConfig = {
   
   // Obtém uma referência ao elemento HTML onde os dados serão exibidos
   const listaEmail = document.getElementById('lista-email');
+
+
   function search(){
     
-  db.collection(localStorage.getItem("email")).where("status", "==", document.querySelector("#status").value)
+  db.collection('tarefas' + localStorage.getItem("nome")).where("status", "==", document.querySelector("#status").value)
   .get()
   .then((querySnapshot) => {
     // Limpa o elemento HTML antes de adicionarmos os novos dados
@@ -35,6 +37,11 @@ const firebaseConfig = {
       const p4 = document.createElement("p");
       const button1 = document.createElement("button");
       const button2 = document.createElement("button");
+      div.className = "card box";
+      
+      h2.className = "card-title";
+      button1.className = "btn waves-effect waves-light";
+      button2.className = "btn red waves-effect waves-light";
         h2.id = 'idnome'
       h2.textContent = `${data.nome}`;
       p1.textContent = `Descrição: ${data.descricao}`;
@@ -43,11 +50,12 @@ const firebaseConfig = {
       p4.textContent = `Status: ${data.status}`;
       button1.textContent = "Realizada";
       button2.textContent = "Negar";
+      
 
      //btn realizada
      button1.addEventListener("click", () => {
         //receber id
-        db.collection(localStorage.getItem("email")).where("nome", "==", document.querySelector("#idnome").textContent)
+        db.collection('tarefas' + localStorage.getItem("nome")).where("nome", "==", document.querySelector("#idnome").textContent)
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
@@ -63,7 +71,7 @@ const firebaseConfig = {
                //atualizar status
                
         // Add a new document in collection "cities"
-        db.collection(localStorage.getItem("email")).doc(localStorage.getItem("iddoc")).update({
+        db.collection('tarefas' + localStorage.getItem("nome")).doc(localStorage.getItem("iddoc")).update({
             status:'realizada'
         })
         .then(() => {
@@ -81,7 +89,7 @@ const firebaseConfig = {
               //btn negar
               button2.addEventListener("click", () => {
                 //receber id
-                db.collection(localStorage.getItem("email")).where("nome", "==", document.querySelector("#idnome").textContent)
+                db.collection('tarefas' + localStorage.getItem("nome")).where("nome", "==", document.querySelector("#idnome").textContent)
                     .get()
                     .then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
@@ -97,7 +105,7 @@ const firebaseConfig = {
                        //atualizar status
                        
                 // Add a new document in collection "cities"
-                db.collection(localStorage.getItem("email")).doc(localStorage.getItem("iddoc")).update({
+                db.collection('tarefas' + localStorage.getItem("nome")).doc(localStorage.getItem("iddoc")).update({
                     status:'negada'
                 })
                 .then(() => {
@@ -116,7 +124,14 @@ const firebaseConfig = {
       div.appendChild(p4);
       div.appendChild(button1);
       div.appendChild(button2);
-
+      if(document.querySelector("#status").value == 'realizada'){
+        button1.style.display = 'none'
+        button2.style.display = 'none'
+    }
+    if(document.querySelector("#status").value == 'negada'){
+        button1.style.display = 'none'
+        button2.style.display = 'none'
+    }
       listaEmail.appendChild(div);
     });
   });

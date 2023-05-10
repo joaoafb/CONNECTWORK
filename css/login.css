@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900');
+:root {
+ --primary-color: #0099ff;
+ --secondary-color: #333333;
+ --font-color: #666666;
+ --background-color: #f2f2f2;
+ --input-background-color: #ffffff;
+ --button-background-color: var(--primary-color);
+ --button-hover-color: #0077cc;
+ --button-font-color: #ffffff;
+ }
+ 
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: Arial, sans-serif;
+ }
+
+ body {
+ background-color: var(--background-color);
+ }
+ html {
+  font-family: 'Roboto', sans-serif;
+}
+
+ .box {
+ max-width: 700px;
+ margin: 0 auto;
+ margin-top: 50px;
+ padding: 20px;
+ border-radius: 10px;
+ background-color: var(--input-background-color);
+ box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+ transition-duration: 0.3s; /* Adiciona uma transição de 0.3 segundos */
+ }
+ 
+ /* Estilização do título */
+ h1 {
+ text-align: center;
+ color: var(--secondary-color);
+ font-size: 32px;
+ margin-bottom: 20px;
+ }
+
+ /* Adiciona uma transição de cor de texto */
+ h1:hover {
+ color:#0099ff; 
+ }
+
+ /* Estilização dos campos de formulário */
+ label {
+ display: block;
+ color: var(--font-color);
+ margin-bottom: 5px;
+ font-size: 16px;
+ }
+
+ input {
+ width: 100%;
+ padding: 10px;
+ border: none;
+ height: 60px;
+ font-size: 15pt;
+ outline: none;
+ border-radius: 5px;
+ margin-bottom: 20px;
+ background-color: var(--input-background-color);
+ box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+ transition-duration: 0.3s; /* Adiciona uma transição de 0.3 segundos */
+ }
+
+ /* Adiciona uma transição de cor de fundo */
+ input:hover {
+ background-color:#f2f2f2; 
+ }
+
+ /* Estilização do botão de login */
+ button[type="submit"] {
+ display:block; 
+ width:100%; 
+ padding:10px; 
+ border:none; 
+ height:60px; 
+ border-radius:5px; 
+ background-color:#0099ff; 
+ color:#ffffff; 
+ font-size:19px; 
+ cursor:pointer; 
+ transition-duration:.3s; /* Adiciona uma transição de .3 segundos */
+ }
+
+ button[type="submit"]:hover {
+ background-color:#0077cc; 
+ }
+
+ /* Estilização do link de cadastro */
+ a { display:block; 
+  margin-top: 10px;
+  width:100%; 
+  padding:10px; 
+  border:none; 
+  height:60px; 
+  border-radius:5px; 
+  background-color:#ffffff; 
+  color:#666666; 
+  font-size:19px; 
+  cursor:pointer; 
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition-duration:.3s; /* Adiciona uma transição de .3 segundos */
+ }
+
+ a:hover {
+ text-decoration:none; 
+ color:#0099ff; /* Muda a cor do texto ao passar o mouse sobre o link */
+ background-color: #dadada;
+ }
+
+ #alert{
+ text-align:center; 
+ color:red; 
+ display:none; 
+ }

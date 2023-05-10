@@ -58,7 +58,7 @@ const firebaseConfig = {
 
 
 // salva os dados no Firebase
-db.collection('tasks').add({
+db.collection('tarefas' + document.querySelector('#inputusuarios').value).add({
     nome: nome,
     descricao: descricao,
     dataEntrega: dataEntrega,
@@ -118,6 +118,7 @@ db.collection(emailuser).add({
 })
 .then((docRef) => {
     console.log("TAREFA GRAVADA NO USUARIO", docRef.id);
+    M.toast({html: 'Tarefa Gravada No Usuario'})
 })
 .catch((error) => {
     console.error("ERRO GRAVAR TAREFA NO USUARIO ", error);
@@ -143,6 +144,7 @@ db.collection(grupo).add({
 })
 .then((docRef) => {
     console.log("TAREFA GRAVADA NO grupo", docRef.id);
+    M.toast({html: 'Tarefa Gravada No Grupo'})
 })
 .catch((error) => {
     console.error("ERRO GRAVAR TAREFA NO grupo", error);

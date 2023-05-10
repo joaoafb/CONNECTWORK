@@ -7,53 +7,96 @@
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+<link rel="stylesheet" href="./css/tarefas.css">
 
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper teal">
-            <a href="#" class="brand-logo center">Criar Grupo</a>
+    <nav class="mobilescreen">
+        <div title="Menu" id="menuToggle">
+          
+          <input type="checkbox">
+            <span></span>
+            <span></span>
+            <span></span>
+             <ul id="menu">
+              <div class="card center transp">
+                <div class="flex row infor">
+                  <label for="">Usuario:</label><p>João Vitor</p>
+                </div>
+                <div class="flex row infor">
+                  <label for="">Cargo:</label><p>Desenvolvedor</p>
+                </div>
+                <div class="flex row infor">
+                  <label for="">Status:</label>
+                  <select name="" id="">
+                    <option value="" disabled selected>Selecione Seu Status</option>
+                    <option value="">Online</option>
+                    <option value="">Ocupado(a)</option>
+                    <option value="">Offline</option>
+                  </select>
+                  
+                </div>
+              </div>
+              <li>
+                <a href="index.html">Home
+                </a>
+               </li>
+            
+               <li><a href="./criartarefas.html">Criar Tarefas
+               </a>
+               </li>
+                  <li onclick="deslogar()">
+                   <a style="color: red;" href="#">Deslogar
+                   </a>
+              </ul>
+          </div>
+      </nav>
+          <!--FIM NAV-->
+          <div class="title">
+            <h1>Connect Work</h1>
+          </div>
+      
+    <div class="central">
+        <div class="card">
+    <form >
+      
+            <div class="input-field">
+                <label for="nomeGrupo">Nome do Grupo</label>
+                <input id="nomeGrupo" type="text">
+                
+            
         </div>
-    </nav>
+        
+            <div class="input-field">
+                <label for="dataCriacao">Data de Criação</label>
+                <input id="dataCriacao" type="date">
+               
+            </div>
+        
+       
+           
+                <div class="input-field">
+                    <span>Imagem do Grupo</span>
+                    <input type="file" name="" class="file" id="imagemgrupo">
+                </div>
+                
+            
+       
+       
+            <div>
+                <button type="button" class="btn" onclick="criarGrupo()">Criar Grupo</button>
+            </div>
+      
+    </form><br>
+    <button class="back " onclick="menu()" type="submit" name="">Voltar</button>
+</div></div>
+<script>
+    function menu(){
+      location.href = './index.html'
+    }
+    </script>
 
-    <div class="container">
-        <form>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="nomeGrupo" type="text" class="validate">
-                    <label for="nomeGrupo">Nome do Grupo</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="dataCriacao" type="date" class="validate">
-                    <label for="dataCriacao">Data de Criação</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="file-field input-field col s12">
-                    <div class="btn">
-                        <span>Imagem do Grupo</span>
-                        <input type="file" id="imagemGrupo">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="button" onclick="criarGrupo()">Criar Grupo
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="cadgrupo.js"></script>
 </body>

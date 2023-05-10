@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Usuario em Grupo</title>
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+  
+<!-- Importar o SDK do Firebase -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.0.0/magic.min.css" />
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="card">
+            <h1 class="section">Adicionar Usuario</h1>
+            <form class="full" action="" onsubmit="adduser(); return false;">
+            <div class="flex column center full">
+                <label for="">Selecione o Usuario:</label>
+                <datalist id="usuarioslist"></datalist>
+                <input class="input" required placeholder="Digite o nome do usuário" type="text" id="usuarios" list="usuarioslist">
+                <br>
+                <label for="">Selecione o Grupo:</label>
+                <datalist id="gruposlist"></datalist>
+                <input class="input" required type="text" placeholder="Digite o nome do grupo" id="grupos" list="gruposlist">
+                <br>
+                <button  type="submit" class="btn full">Adicionar Usuario</button>
+
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+<script src="./adduser.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>

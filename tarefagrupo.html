@@ -5,7 +5,10 @@
     <title> Tarefas usuario</title>
    <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
 <!-- Importar o SDK do Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
@@ -16,26 +19,48 @@
     <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
  
-   
+   <style>
+    .box{
+      height: auto;
+  width: auto;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+    }
+   </style>
 
 
   </head>
   <body onload="searchgroup()">
-    <div>
-      <label for="">Selecione o grupo</label>
-      <select name="grupos" id="grupos" value=""><option value=""></option></select>
-   <br><br>
-        <label for="">Filtro</label>
-        <select name="status" id="status" value="">
-<option value=""></option>
-            <option value="realizada">Realizadas</option>
-            <option value="pendente">Pendente</option>
-            <option value="negada">Negadas</option>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input id="inputgrupos" type="text" list="grupos">
+        <label for="inputgrupos">Grupos</label>
+        <datalist id="grupos"></datalist>
+      </div>
+      <div class="input-field col s12 m3">
+        <select id="status">
+          <option value="filtro">Filtro</option>
+          <option value="realizada">Realizadas</option>
+          <option value="pendente">Pendente</option>
+          <option value="negada">Negadas</option>
         </select>
-        
-        <button onclick="search()">Procurar</button>
+        <label for="status">Status</label>
+      </div>
+      <div class="col s12 m3">
+        <button class="btn waves-effect waves-light" onclick="search()">Procurar</button>
+      </div>
     </div>
+    
 <div id="lista-email"></div>
   </body>
+  <script>
+     document.addEventListener('DOMContentLoaded', function() {
+          // Initialize select dropdowns
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems);
+      });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./tarefagrupo.js"></script>
 </html>

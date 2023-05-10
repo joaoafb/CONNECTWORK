@@ -25,15 +25,17 @@ document.getElementById("form-cadastro").addEventListener("submit", function(eve
             user.user.updateProfile({
                 displayName: nome
             }).then(function() {
-                
+                 
                 const db = firebase.firestore();
 
                 db.collection("usuarios").add({
                     nome:nome,
                  email: email,
+                 funcao: document.querySelector("#funcao").value
                  
                 }).then(function(docRef) {
                   console.log("Documento adicionado com ID:", docRef.id);
+                  M.toast({html: 'Conta Cadastrada Com Sucesso'})
                   location.href = 'login.html'
                 }).catch(function(error) {
                   console.error("Erro ao adicionar documento:", error);
