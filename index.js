@@ -78,6 +78,7 @@ document.getElementById('grupos').appendChild(content);
 //MENSAGENS
         firebase.database().ref("msg" + localStorage.getItem("nome")).on("value", (snapshot) => {
           
+          document.querySelector("#mensagens").innerHTML = ''
           snapshot.forEach((childSnapshot) => {
           
               const doc = childSnapshot.val()
