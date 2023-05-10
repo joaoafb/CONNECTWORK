@@ -182,7 +182,7 @@ const mensagemRef = firebase.database().ref().child("msg" + localStorage.getItem
 mensagemRef.remove()
   .then(() => {
     console.log("Mensagem removida com sucesso");
-
+    location.reload()
   })
   .catch((error) => {
     console.error("Erro ao remover mensagem:", error);
